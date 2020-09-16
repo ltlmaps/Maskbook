@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken'
 import type { AbiItem } from 'web3-utils'
 import { BigNumber } from 'bignumber.js'
 import { web3 } from '../Wallet/web3'
-import { onClaimResult, onCreationResult, onExpired, onRefundResult } from './state-machine'
+import { getRedPacketByID, onClaimResult, onCreationResult, onExpired, onRefundResult } from './state-machine'
 import HappyRedPacketABI from '../../contracts/happy-red-packet/HappyRedPacket.json'
 import type { HappyRedPacket } from '../../contracts/happy-red-packet/HappyRedPacket'
 import type { CheckRedPacketAvailabilityResult, CreateRedPacketResult, RedPacketJSONPayload } from './types'
@@ -15,15 +15,16 @@ import { EthereumTokenType } from '../../web3/types'
 import { resolveChainName } from '../../web3/pipes'
 import { getConstant } from '../../web3/helpers'
 import { RED_PACKET_CONSTANTS } from './constants'
+import { getWallets } from '../Wallet/wallet'
 
-type RedPacketID = { redPacketID: string }
+export type RedPacketID = { redPacketID: string }
 function createRedPacketContract(address: string) {
     return (new web3.eth.Contract(HappyRedPacketABI as AbiItem[], address) as unknown) as HappyRedPacket
 }
 async function getRedPacketContract() {
     return createRedPacketContract(getConstant(RED_PACKET_CONSTANTS, 'HAPPY_RED_PACKET_ADDRESS', await getChainId()))
 }
-export const redPacketAPI = {
+export const RedPacketAPI = {
     async claimByServer(
         claimWithWallet: string,
         payload: RedPacketJSONPayload,
@@ -180,9 +181,8 @@ export const redPacketAPI = {
      * @param red_packet_id Red packet ID
      */
     async refund(id: RedPacketID, receipt = false): Promise<{ refund_transaction_hash: string }> {
-        const t = await createRedPacketTransaction('readonly')
-        const packet = await t.getByIndex('red_packet_id', id.redPacketID)
-        const wallets = await t.objectStore('Wallet').getAll()
+        const packet = await getRedPacketByID(id.redPacketID)
+        const wallets = await getWallets()
 
         if (!packet) throw new Error(`can not find red packet with id: ${id}`)
         if (wallets.every((wallet) => wallet.address !== packet.sender_address))
