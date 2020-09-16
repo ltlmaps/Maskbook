@@ -1,13 +1,13 @@
 export {}
-if (typeof Blob !== 'undefined' && typeof Blob.prototype.arrayBuffer === 'undefined') {
-    Object.defineProperty(Blob.prototype, 'arrayBuffer', {
+if (typeof File !== 'undefined' && typeof File.prototype.arrayBuffer === 'undefined') {
+    Object.defineProperty(File.prototype, 'arrayBuffer', {
         configurable: true,
         writable: true,
         value: toArrayBuffer,
     })
 }
 
-function toArrayBuffer(this: Blob) {
+function toArrayBuffer(this: File) {
     return new Promise<ArrayBuffer>((resolve, reject) => {
         const reader = new FileReader()
         reader.addEventListener('abort', reject)
