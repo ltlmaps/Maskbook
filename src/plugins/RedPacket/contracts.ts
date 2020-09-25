@@ -8,7 +8,6 @@ import type { HappyRedPacket } from '../../contracts/happy-red-packet/HappyRedPa
 import type { CheckRedPacketAvailabilityResult, CreateRedPacketResult, RedPacketJSONPayload } from './types'
 import { asyncTimes, pollingTask } from '../../utils/utils'
 import { sendTx } from '../Wallet/transaction'
-import { createRedPacketTransaction } from './database'
 import type { TxHashID, DatabaseID } from '../Wallet/api'
 import { getChainId } from '../../extension/background-script/EthereumService'
 import { EthereumTokenType } from '../../web3/types'
