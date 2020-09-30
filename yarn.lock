@@ -1873,10 +1873,10 @@
   resolved "https://npm.dimension.im/download/@dimensiondev/webcrypto/0.1.1-20200731092728-9e28e25/62fb53267b99d38ed317abda096f6cc553729b31b4874d65657469acd2a1650f#2ccf39b58983eec01067371ff2fe56d4447f790d"
   integrity sha512-ChB9mmskLeGFwhQ91BoGWPoRmEw/Y8he20hRBWdy5RDubN+yJ413wiTm6yR23+0EIAQ7g0Y/rRen1SRR6uHLXQ==
 
-"@dimensiondev/webextension-shim@^0.0.3-20":
-  version "0.0.3-20"
-  resolved "https://npm.dimension.im/download/@dimensiondev/webextension-shim/0.0.3-20/b9f0b74eb9a1eb6bc3716d90ca11fbbc3a25bcda728db7203469bb6e49ccb5ec#534b32c0323010219a2ed3a45da9447b2333a626"
-  integrity sha512-q7iOWDgjCFdRYsxg+4qpY5tKIS/AYetkR/DVFTG8lTvr76nc/q2/a8eXv8q7EbBkS4Z9bH6jJ7ivZ+/tdkefaw==
+"@dimensiondev/webextension-shim@^0.0.3-20200930073519-94cc861":
+  version "0.0.3-20200930073519-94cc861"
+  resolved "https://npm.dimension.im/download/@dimensiondev/webextension-shim/0.0.3-20200930073519-94cc861/a06420dae007ce4a8b515bd747d6daf7cdd80d0997540c832af7517e85d4c969#7f8878af2f666f320af85a8fff33477381091b7b"
+  integrity sha512-s54zMo84a8K+6eW4JZ/U/HqyN3qDXc+ji1TycpoDG1kYTZXz7BcVpc4KqDdXhMflULQAWdPslPk7lmkRqkWUSw==
   dependencies:
     async-call-rpc "^1.0.4"
     systemjs "^6.3.2"

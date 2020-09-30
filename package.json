@@ -139,7 +139,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@dimensiondev/webcrypto": "^0.1.1-20200731092728-9e28e25",
-    "@dimensiondev/webextension-shim": "^0.0.3-20",
+    "@dimensiondev/webextension-shim": "^0.0.3-20200930073519-94cc861",
     "@dimensiondev/webpack-web-ext-plugin": "^0.0.3-20200731084410-7de6117",
     "@nice-labs/git-rev": "^3.5.0",
     "@sinonjs/text-encoding": "^0.7.1",
